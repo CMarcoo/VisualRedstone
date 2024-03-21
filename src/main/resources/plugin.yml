@@ -1,0 +1,13 @@
+name: "VisualRedstone"
+version: '${project.version}'
+main: "top.cmarco.visualredstone.VisualRedstone"
+api-version: "1.20"
+authors: ["CMarco"]
+description: "Visualize your Redstone!"
+commands:
+  redstone:
+    permission: 'visualredstone.command'
+    permission-message: '§7[&cVisualRedstone§7] &4Missing permission &evisualredstone.command'
+    usage: '/redstone toggle'
+    description: 'Toggles the Visual Redstone mode.'
+    aliases: ['vr', 'visualredstone']
