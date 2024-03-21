@@ -65,7 +65,6 @@ public final class RedstoneCommand implements CommandExecutor {
         }
 
         final boolean toggleResult = redstoneDataManager.togglePlayer(player);
-        System.out.println(toggleResult);
 
         if (toggleResult) {
             redstoneRenderingService.startRendering(player);

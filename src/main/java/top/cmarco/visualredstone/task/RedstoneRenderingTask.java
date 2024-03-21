@@ -93,8 +93,8 @@ public final class RedstoneRenderingTask implements Runnable {
                                 textDisplay.setVisibleByDefault(false);
                                 textDisplay.setBillboard(Display.Billboard.CENTER);
                                 textDisplay.setAlignment(TextDisplay.TextAlignment.CENTER);
-                                textDisplay.setSeeThrough(true);
-                                textDisplay.text(ChatUtils.colour("&c" + power));
+                                textDisplay.setSeeThrough(false);
+                                textDisplay.text(ChatUtils.getRedstoneHoverComponent(power));
                                 player.showEntity(plugin, textDisplay);
                                 textDisplayEntities.add(textDisplay.getUniqueId());
                             });
