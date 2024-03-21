@@ -1,8 +1,9 @@
 name: "VisualRedstone"
 version: '${project.version}'
 main: "top.cmarco.visualredstone.VisualRedstone"
-api-version: "1.20"
+api-version: "1.19"
 authors: ["CMarco"]
+folia-supported: false
 description: "Visualize your Redstone!"
 commands:
   redstone:

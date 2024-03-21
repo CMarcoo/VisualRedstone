@@ -88,13 +88,13 @@ public final class RedstoneRenderingTask implements Runnable {
 
                     final int power = powerable.getPower();
 
-                    world.spawn(block.getLocation().add(0,0.125,0), TextDisplay.class, CreatureSpawnEvent.SpawnReason.CUSTOM,
+                    world.spawn(block.getLocation().add(0.5,0.125,0.5), TextDisplay.class, CreatureSpawnEvent.SpawnReason.CUSTOM,
                             textDisplay -> {
                                 textDisplay.setVisibleByDefault(false);
                                 textDisplay.setBillboard(Display.Billboard.CENTER);
                                 textDisplay.setAlignment(TextDisplay.TextAlignment.CENTER);
                                 textDisplay.setSeeThrough(true);
-                                textDisplay.text(ChatUtils.colour("&e" + power));
+                                textDisplay.text(ChatUtils.colour("&c" + power));
                                 player.showEntity(plugin, textDisplay);
                                 textDisplayEntities.add(textDisplay.getUniqueId());
                             });
