@@ -22,8 +22,6 @@ import com.google.common.base.Preconditions;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.TextColor;
-import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.serializer.ComponentSerializer;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.jetbrains.annotations.NotNull;
@@ -35,32 +33,32 @@ import java.util.Objects;
 
 public final class ChatUtils {
 
-    private static Map<Integer, String> redstonePowerHexColourMap = new HashMap<>(0x10);
-    private static Map<Integer, Component> cachedRedstoneTextComponents = new HashMap<>(0x10);
+    private static final Map<Integer, String> REDSTONE_POWER_HEX_COLOUR_MAP = new HashMap<>(0x10);
+    private static final Map<Integer, Component> CACHED_REDSTONE_TEXT_COMPONENTS = new HashMap<>(0x10);
 
     static {
-        redstonePowerHexColourMap.put(0x0, "#FF0000");
-        redstonePowerHexColourMap.put(0x1, "#FF1A00");
-        redstonePowerHexColourMap.put(0x2, "#FF3400");
-        redstonePowerHexColourMap.put(0x3, "#FF4E00");
-        redstonePowerHexColourMap.put(0x4, "#FF6800");
-        redstonePowerHexColourMap.put(0x5, "#FF8100");
-        redstonePowerHexColourMap.put(0x6, "#FF9B00");
-        redstonePowerHexColourMap.put(0x7, "#FFB500");
-        redstonePowerHexColourMap.put(0x8, "#FFCF00");
-        redstonePowerHexColourMap.put(0x9, "#FFE900");
-        redstonePowerHexColourMap.put(0xA, "#FFFF00");
-        redstonePowerHexColourMap.put(0xB, "#E9FF00");
-        redstonePowerHexColourMap.put(0xC, "#CFFF00");
-        redstonePowerHexColourMap.put(0xD, "#B5FF00");
-        redstonePowerHexColourMap.put(0xE, "#9BFF00");
-        redstonePowerHexColourMap.put(0xF, "#81FF00");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0xF, "#940303");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0xE, "#FF1A00");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0xD, "#FF3400");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0xC, "#FF4E00");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0xB, "#FF6800");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0xA, "#FF8100");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0x9, "#FF9B00");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0x8, "#FFB500");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0x7, "#FFCF00");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0x6, "#FFE900");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0x5, "#FFFF00");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0x4, "#E9FF00");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0x3, "#CFFF00");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0x2, "#B5FF00");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0x1, "#9BFF00");
+        REDSTONE_POWER_HEX_COLOUR_MAP.put(0x0, "#81FF00");
 
-        redstonePowerHexColourMap.forEach((k,v) -> cachedRedstoneTextComponents.put(k, PlainTextComponentSerializer
+        REDSTONE_POWER_HEX_COLOUR_MAP.forEach((k, v) -> CACHED_REDSTONE_TEXT_COMPONENTS.put(k, PlainTextComponentSerializer
                 .builder()
                 .build()
                 .deserialize(Integer.toString(k))
-                .color(TextColor.fromHexString(redstonePowerHexColourMap.get(k)))));
+                .color(TextColor.fromHexString(REDSTONE_POWER_HEX_COLOUR_MAP.get(k)))));
     }
 
     /**
@@ -72,7 +70,7 @@ public final class ChatUtils {
     @NotNull
     public static Component getRedstoneHoverComponent(@Range(from=0, to=15) final int redstonePower) {
         Preconditions.checkArgument(0 <= redstonePower && redstonePower <= 15, "Illegal Redstone Power!");
-        return cachedRedstoneTextComponents.get(redstonePower);
+        return CACHED_REDSTONE_TEXT_COMPONENTS.get(redstonePower);
     }
 
     private ChatUtils() {
