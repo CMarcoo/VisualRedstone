@@ -4,7 +4,9 @@
 ![GitHub License](https://img.shields.io/github/license/CMarcoo/VisualRedstone)
 ![GitHub file size in bytes](https://img.shields.io/github/size/CMarcoo/VisualRedstone/src%2Fmain%2Fjava)
 
-A PaperMC plugin to visualize redstone power status.
+![SVG Image](logo-written.svg)
+
+---
 
 #### Requirements:
 
